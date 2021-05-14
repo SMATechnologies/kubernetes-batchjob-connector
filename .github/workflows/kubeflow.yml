@@ -3,8 +3,6 @@ name: Kubernetes Batchjob Connector
 
 on:
   push:
-    branches:
-      - master
     tags:
       - 'v*'
 
@@ -29,7 +27,7 @@ jobs:
       run: dotnet publish KubeJobs/KubeJobs.csproj -c Release -o linuxoutput --self-contained -r linux-x64
 
     - name: Tar Linux output folder
-        run: tar -cvzf ./kubernetes-batchjob-container-linux.tar.gz linuxoutput
+      run: tar -cvzf ./kubernetes-batchjob-container-linux.tar.gz linuxoutput
 
     - name: Upload Linux artifact
       uses: actions/upload-artifact@v2.2.2
@@ -57,14 +55,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Release
     needs: package
-    
+
     steps:
       - name: Download Package
         uses: actions/download-artifact@v1
         with:
           name: kubernetes-batchjob-container-artifact
           path: ./
-          
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
