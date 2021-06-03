@@ -39,7 +39,7 @@ jobs:
     - name: Publish
       run: dotnet publish KubeJobs/KubeJobs.csproj -c Release -o winoutput --self-contained -r win-x64
 
-    - name: action-zip
+    - name: Zip Win output folder
       uses: montudor/action-zip@v0.1.1
       with:
         args: zip -qq -r ./kubernetes-batchjob-container-win.zip winoutput
@@ -73,3 +73,25 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+
+      - name: Upload Release Asset Linux
+        id: upload-release-asset-linux
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./kubernetes-batchjob-container-linux.tar.gz
+          asset_name: kubernetes-batchjob-container-linux.tar.gz
+          asset_content_type: application/zip
+
+      - name: Upload Release Asset Win
+        id: upload-release-asset-win
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./kubernetes-batchjob-container-win.zip
+          asset_name: kubernetes-batchjob-container-win.zip
+          asset_content_type: application/zip
