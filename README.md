@@ -37,7 +37,7 @@ To get the connector, simply browse to the [latest release](https://github.com/s
 
 ## Execution
 
-Build and run the job like any other OpCon job. No other information is required to be maintained in OpCon for the container to run.
+Build and run the job like any other OpCon job. No other information is required to be maintained in OpCon for the container to run. You can view job output like any other job, and it will fetch output from the container job for each container that is run as part of the job execution. Please note that 'kill job' will kill the connector, not the actual jobs running in the containers.
 
 # License
 
