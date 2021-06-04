@@ -11,9 +11,9 @@ SMA Technologies assumes no liability for damage caused by the usage of any of t
 # Prerequisites
 
 - Before using the connector you must have a cloud Kubernetes Service already configured and running. E.g. [Sample for Azure](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal).
-- You should also have connected to it, so you have a Kubernetes config file with the cluster/user/context/token information in it (typically created at /Users/<userid>/.kube/config). An example of how to do that for Azure is [here](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials).
+- You should also have connected to it, so you have a Kubernetes config file with the cluster/user/context/token information in it (typically created at /Users/\<userid\>/.kube/config). An example of how to do that for Azure is [here](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials).
 - You need to save this config file in some place where the connector can access it.
-- You must also have a Docker image that contains the job you need to run uploaded to a public registry like Dokcer Hub, or even a private one, as long as your cloud Kubernetes Service has been granted privileges to pull images from there. For Azure, you can do that while setting up the Kubernetes Cluster.
+- You must also have a Docker image that contains the job you need to run uploaded to a public registry like Docker Hub, or even a private one, as long as your cloud Kubernetes Service has been granted privileges to pull images from there. For Azure, you can do that while setting up the Kubernetes Cluster.
 
 # Instructions
 
@@ -27,7 +27,7 @@ To get the connector, simply browse to the [latest release](https://github.com/s
 - For Windows, the job's command line should be similar to: C:\MyApps\KubeJobs.exe config=".\kubeconfig\config" image="mycompany/my-job-image" command="my-job-command" arguments="arg1 arg2 arg3" name="my-job" container-name="my-container" pods-to-complete="5" parallel-executions="3"
 - For Linux, the job's start image should be similar to: /app/KubeJobs and parameters should be like: config="./app/config" image="mycompany/my-job-image" command="my-job-command" arguments="arg1 arg2 arg3" name="my-job" container-name="my-container" pods-to-complete="5" parallel-executions="3"
 - **config:** The Kubernetes config file explained in prerequisites. **Required**
-- **image:** The image from the Dokcer registry that has the job to run. **Required**
+- **image:** The image from the Docker registry that has the job to run. **Required**
 - **command:** The command to execute within the image.
 - **arguments:** The arguments to the command above.
 - **name:** Name of the Kubernetes job. **Required**
