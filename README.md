@@ -37,7 +37,7 @@ To get the connector, simply browse to the [latest release](https://github.com/s
 
 ## Execution
 
-Build and run the job like any other OpCon job. No other information is required to be maintained in OpCon for the container to run. You can view job output like any other job, and it will fetch output from the container job for each container that is run as part of the job execution. Please note that 'kill job' will kill the connector, not the actual jobs running in the containers. NOTE: If the image in the Docker Registry is updated between job reruns (for the tag used), the connector will pull the latest image and run it, so multiple OpCon job runs may have different results in this case.
+Build and run the job like any other OpCon job. No other information is required to be maintained in OpCon for the container to run. You can view job output like any other job, and it will fetch output from the container job for each container that is run as part of the job execution. Please note that 'kill job' will kill the connector, not the actual jobs running in the containers. NOTE: If the image in the Docker Registry is updated between job reruns (for the tag used), the connector will pull the updated image and run it, so multiple OpCon job runs may have different results in this case.
 
 # License
 
